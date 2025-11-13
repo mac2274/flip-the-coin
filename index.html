@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="resources/favicon.ico" type="image/x-icon" sizes="96x96" />
+
+  <title>Flip the coin | devChallenges.io</title>
+
+  <!--You are welcome to delete these styles or modify them in your own stylesheet -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #414a65;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    }
+
+    .author-info {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 16px;
+      color: #899acd;
+    }
+
+    .author-info a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .div-container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      gap: 3%;
+    }
+
+    h1 {
+      color: white;
+      font-weight: bold;
+      font-size: 5em;
+      -webkit-text-stroke: 6px rgba(54, 56, 65, 1);
+      color: #FFFFFF;
+      letter-spacing: -7px;
+    }
+
+    p {
+      color: white;
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+
+    .coin-container {
+      display: flex;
+      flex-direction: column;
+      height: 30%;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 3%;
+    }
+
+    #heads,
+    #tails {
+      display: block;
+      cursor: pointer;
+    }
+
+    #button {
+      color: white;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: #2170b0;
+      padding: 0.8em 2em;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .block {
+      display: block;
+    }
+
+    /* .rotate {
+      transform: rotate(360);
+      transition: transform 3s;
+
+      animation-name: rotate;
+      animation-duration: 0.7s;
+    } */
+
+    /* animation is genarated by a online generator */
+    .animated.flip {
+      -webkit-backface-visibility: visible;
+      backface-visibility: visible;
+      -webkit-animation-name: flip;
+      animation-name: flip;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    @-webkit-keyframes flip {
+      0% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+      }
+
+      40% {
+        -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+        transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+      }
+
+      50% {
+        -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+        transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+      }
+
+      80% {
+        -webkit-transform: perspective(400px) scale3d(.95, .95, .95);
+        transform: perspective(400px) scale3d(.95, .95, .95);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+      }
+
+      100% {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+      }
+    }
+
+    @keyframes flip {
+      0% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+      }
+
+      40% {
+        -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+        transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+      }
+
+      50% {
+        -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+        transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+      }
+
+      80% {
+        -webkit-transform: perspective(400px) scale3d(.95, .95, .95);
+        transform: perspective(400px) scale3d(.95, .95, .95);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+      }
+
+      100% {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="div-container">
+    <h1>Flip the coin</h1>
+    <p>Press the coin or the button to flip the coin</p>
+
+    <div class="coin-container">
+      <img src="/resources/heads.svg" id="heads" class="animated flip" alt="Heads">
+      <img src="/resources/tails.svg" id="tails" class="animated flip hidden" alt="Tails">
+      <img src="/resources/shadow.svg" id="shadow" alt="shadow">
+
+      <p id="coin-text">Heads</p>
+
+    </div>
+
+    <button id="button">Random</button>
+  </div>
+
+  <div class="author-info">
+    Coded by <a href="#">Maggi Yuen</a> | Challenge by
+    <a href="https://www.devchallenges.io?ref=challenge" target="_blank">devChallenges.io</a>.
+  </div>
+
+  <script>
+    const heads = document.querySelector('#heads');
+    const tails = document.querySelector('#tails');
+    const button = document.querySelector('#button');
+
+    const text = document.querySelector('#coin-text');
+
+    let isHead = true;
+
+    document.addEventListener('click', (event) => {
+      if (event.target === heads) {
+        heads.classList.add('hidden', 'animated', 'flip');
+        tails.classList.remove('hidden');
+        text.textContent = tails.alt;
+        isHead = false;
+      }
+
+      if (event.target === tails) {
+        heads.classList.remove('hidden');
+        tails.classList.add('hidden', 'animated', 'flip');
+        text.textContent = heads.alt;
+        isHead = true;
+      }
+
+      if (event.target === button) {
+        if (isHead) {
+          heads.classList.add('hidden', 'animated', 'flip');
+          tails.classList.remove('hidden');
+          text.textContent = tails.alt;
+        } else {
+          heads.classList.remove('hidden');
+          tails.classList.add('hidden', 'animated', 'flip');
+          text.textContent = heads.alt;
+        }
+        isHead = !isHead; // Zustandwechel
+      }
+    });
+
+  </script>
+</body>
+
+</html>
